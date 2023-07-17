@@ -81,6 +81,10 @@ main() {
   host="$(get_tmux_option "@catppuccin_host" "off")"
   readonly host
 
+  local k8s_ctx
+  host="$(get_tmux_option "@catppuccin_k8s_ctx" "off")"
+  readonly k8s_ctx
+
   local date_time
   date_time="$(get_tmux_option "@catppuccin_date_time" "off")"
   readonly date_time
@@ -114,6 +118,9 @@ main() {
   local show_user
   readonly show_user="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue] #[fg=$thm_fg,bg=$thm_gray] #(whoami) "
 
+  local show_k8s_ctx
+  readonly show_k8s_ctx="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_gray] #(kubectx -c) "
+
   local show_host
   readonly show_host="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_gray] #H "
 
@@ -144,6 +151,10 @@ main() {
 
   if [[ "${host}" == "on" ]]; then
     right_column2=$right_column2$show_host
+  fi
+
+  if [[ "${k8s_ctx}" == "on" ]]; then
+    right_column2=$right_column2$show_k8s_ctx
   fi
 
   if [[ "${date_time}" != "off" ]]; then
