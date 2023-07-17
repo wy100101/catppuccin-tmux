@@ -82,7 +82,7 @@ main() {
   readonly host
 
   local k8s_ctx
-  host="$(get_tmux_option "@catppuccin_k8s_ctx" "off")"
+  k8s_ctx="$(get_tmux_option "@catppuccin_k8s_ctx" "off")"
   readonly k8s_ctx
 
   local date_time
