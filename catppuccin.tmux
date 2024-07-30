@@ -119,7 +119,7 @@ main() {
   readonly show_user="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue] #[fg=$thm_fg,bg=$thm_gray] #(whoami) "
 
   local show_k8s_ctx
-  readonly show_k8s_ctx="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_gray] #(kubectx -c) "
+  readonly show_k8s_ctx="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_gray] #(kubectx -c|sed -e 's!^arn:aws:eks:\([^:]*\):\([0-9]*\):cluster/\(.*\)!\1:\2:\3!')/(kubens -c)"
 
   local show_host
   readonly show_host="#[fg=$thm_blue,bg=$thm_gray]$right_separator#[fg=$thm_bg,bg=$thm_blue]󰒋 #[fg=$thm_fg,bg=$thm_gray] #H "
